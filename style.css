@@ -25,4 +25,6 @@
   font-size: 15rem;
   padding: 0;
   margin: 0;
+  /* prevent higlihting the element */
+  user-select: none;
 }
