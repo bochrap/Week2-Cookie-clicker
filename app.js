@@ -30,6 +30,12 @@ setInterval(function () {
   updateCookies(cps);
 }, 1000);
 
+const granny = 1;
+
+function upgradePurchased(upgrade) {
+  cps += upgrade;
+}
+
 //Save values to restore at the next session (simple way)
 // function saveProgress() {
 //   localStorage.setItem("hoardedCookies", cookieCounter);
@@ -45,19 +51,21 @@ function saveProgress() {
   localStorage.setItem("progress", JSON.stringify(progress));
 }
 
-//Retrieve saved values into corresponding variables
+//Retrieve saved values into corresponding variables ***************************UNCOMMENT THIS ONE LATER
 
-function loadProgress() {
-  const progress = JSON.parse(localStorage.getItem("progress"));
-  if (progress) {
-    cookieCounter = progress.cookieCounter;
-    cps = progress.cps;
-    howManyCookies.textContent = progress.howManyCookies;
-    howFastCookies.textContent = progress.howFastCookies;
-  }
-}
+// function loadProgress() {
+//   const progress = JSON.parse(localStorage.getItem("progress"));
+//   if (progress) {
+//     cookieCounter = progress.cookieCounter;
+//     cps = progress.cps;
+//     howManyCookies.textContent = progress.howManyCookies;
+//     howFastCookies.textContent = progress.howFastCookies;
+//   }
+// }
 
-loadProgress();
+// loadProgress();
+
+//attempl to clear preferences
 
 // function clearPreferences(event) {
 //   event.preventDefault();
