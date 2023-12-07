@@ -21,3 +21,11 @@ function updateCookies(byHowMany) {
 setInterval(function () {
   updateCookies(cps);
 }, 1000);
+
+//Save values to restore at the next session
+function saveProgress() {
+  localStorage.setItem("hoardedCookies", cookieCounter);
+  localStorage.setItem("gain$", cps);
+}
+
+//Retrieve saved values into corresponding variables
