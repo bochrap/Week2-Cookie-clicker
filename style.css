@@ -2,6 +2,7 @@
   box-sizing: border-box;
   font-family: sans-serif;
   background-color: bisque;
+  scroll-behavior: smooth;
 }
 
 #main-section {
@@ -39,8 +40,8 @@
   font-size: 1rem;
 }
 
-button {
-  border: none;
+button:disabled {
+  filter: grayscale(1);
 }
 
 img {
