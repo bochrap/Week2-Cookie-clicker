@@ -5,21 +5,16 @@ const howFastCookies = document.getElementById("cookiesPerSecond");
 //variables for basic functionalities
 let cookieCounter = 0;
 let cps = 1;
-
-//progress values
-// const hoardedCookies = Number(localStorage.getItem("hoardedCookies"));
-// const gain$ = Number(localStorage.getItem("gainS"));
+let clickValue = 1;
 
 //Cookie clicked event listnener
 cookie.addEventListener("click", function () {
-  updateCookies(1);
+  updateCookies(clickValue);
 });
 
 //function updating the cookies count and cps by a given value
 function updateCookies(byHowMany) {
   cookieCounter += byHowMany;
-  const howManyCookies = document.getElementById("numberOfCookies");
-  const howFastCookies = document.getElementById("cookiesPerSecond");
   howManyCookies.textContent = cookieCounter;
   howFastCookies.textContent = `${cps} cps`;
   saveProgress();
@@ -30,23 +25,33 @@ setInterval(function () {
   updateCookies(cps);
 }, 1000);
 
-const granny = 1;
+//UPGRADES SECTION
 
-function upgradePurchased(upgrade) {
+const cpsGranny = 1;
+const cpsOven = 10;
+const copsFactory = 100;
+const cpsMine = 1000;
+const cpsBank = 10000;
+
+const clickVal1 = 1;
+const clickVal2 = 10;
+const clickVal3 = 100;
+const clickVal4 = 1000;
+
+function upgradePurchasedCps(upgrade) {
   cps += upgrade;
 }
 
-//Save values to restore at the next session (simple way)
-// function saveProgress() {
-//   localStorage.setItem("hoardedCookies", cookieCounter);
-//   localStorage.setItem("gain$", cps);
-// }
+function upgradePurchasedClickValue(upgrade) {
+  clickValue += upgrade;
+}
 
 //save values using JSON.stringify
 function saveProgress() {
   const progress = {
     cookieCounter,
     cps,
+    clickValue,
   };
   localStorage.setItem("progress", JSON.stringify(progress));
 }
@@ -58,6 +63,7 @@ function saveProgress() {
 //   if (progress) {
 //     cookieCounter = progress.cookieCounter;
 //     cps = progress.cps;
+//     clickValue = progress.clickValue;
 //     howManyCookies.textContent = progress.howManyCookies;
 //     howFastCookies.textContent = progress.howFastCookies;
 //   }
@@ -76,5 +82,3 @@ function saveProgress() {
 //   cookieCounter = hoardedCookies;
 //   cps = gain$;
 // }
-
-//Make progress to be saved a com[lex object
