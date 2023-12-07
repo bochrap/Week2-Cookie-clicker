@@ -18,3 +18,6 @@ function updateCookies(byHowMany) {
 }
 
 //Add cookies with time
+setInterval(function () {
+  updateCookies(cps);
+}, 1000);
