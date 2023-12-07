@@ -38,8 +38,20 @@ const clickVal2 = 10;
 const clickVal3 = 100;
 const clickVal4 = 1000;
 
+const testGranny = {
+  cost: 100,
+  multiplier: 1,
+  purchased: 0,
+  function() {
+    localStorage.setItem("testGranny", this.purchased);
+  },
+};
+
 function upgradePurchasedCps(upgrade) {
-  cps += upgrade;
+  const bonus = upgrade.multiplier;
+  cps += bonus;
+  upgrade.purchased += 1;
+  upgrade.function();
 }
 
 function upgradePurchasedClickValue(upgrade) {
