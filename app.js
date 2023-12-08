@@ -43,13 +43,6 @@ const upgrCost = [100, 10000, 1000000, 100000000, 10000000000];
 const upgrMultiplier = [1, 10, 100, 1000, 10000];
 const upgrPurchased = [0, 0, 0, 0, 0];
 
-//kill test granny
-const testGranny = {
-  cost: 100,
-  multiplier: 1,
-  purchased: 0,
-};
-
 function upgradePurchasedCps(upgrade, index) {
   //Create an object
   const upgrObj = {
@@ -82,7 +75,6 @@ function saveProgress() {
     cookieCounter,
     cps,
     clickValue,
-    testGranny: testGranny.purchased, //Kill test granny
     upgrPurchased,
   };
   localStorage.setItem("progress", JSON.stringify(progress));
