@@ -42,7 +42,7 @@ const upgrName = ["Grandma", "Oven", "Factory"];
 const upgrCost = [100, 10000, 1000000];
 const upgrMultiplier = [1, 10, 100];
 const upgrPurchased = [0, 0, 0];
-const upgrType = ["cps", "cps", "cps", "clickVal", "clickVal", "clickVal"];
+const upgrType = ["cps", "clickVal", "cps", "clickVal", "clickVal", "clickVal"];
 
 function upgradePurchasedCps(index) {
   //Create an object
@@ -53,8 +53,12 @@ function upgradePurchasedCps(index) {
     purchased: upgrPurchased[index],
     type: upgrType[index],
   };
-  //update basic values
-  cps += upgrObj.multiplier;
+  //update basic values based on the type of upgrade
+  if (upgrObj.type == "cps") {
+    cps += upgrObj.multiplier;
+  } else {
+    clickValue += upgrObj.multiplier;
+  }
   upgrPurchased[index] += 1;
   //update shop labels]
 }
