@@ -27,24 +27,31 @@ setInterval(function () {
 
 //UPGRADES SECTION
 
-const cpsGranny = 1;
-const cpsOven = 10;
-const copsFactory = 100;
-const cpsMine = 1000;
-const cpsBank = 10000;
-
-const clickVal1 = 1;
-const clickVal2 = 10;
-const clickVal3 = 100;
-const clickVal4 = 1000;
-
 const upgrName = ["Grandma", "Oven", "Factory"];
 const upgrCost = [100, 10000, 1000000];
 const upgrMultiplier = [1, 10, 100];
 const upgrPurchased = [0, 0, 0];
-const upgrType = ["cps", "clickVal", "cps", "clickVal", "clickVal", "clickVal"];
+const upgrType = ["cps", "cps", "cps", "clickVal", "clickVal", "clickVal"];
 
-function upgradePurchasedCps(index) {
+function updateLabels(index) {
+  const purchased = document.getElementsByClassName("purchased");
+  purchased[index].textContent = upgrPurchased[index];
+
+  const name = document.getElementsByClassName("name");
+  name[index].textContent = upgrName[index];
+
+  const price = document.getElementsByClassName("price");
+  price[index].textContent = `🍪${upgrCost[index]}`;
+
+  const upgrade = document.getElementsByClassName("upgrade");
+  if (upgrType[index] == "cps") {
+    upgrade[index].textContent = `+${upgrMultiplier[index]}cps`;
+  } else {
+    upgrade[index].textContent = `+${upgrMultiplier[index]}cV`;
+  }
+}
+
+function purchaseUpgrade(index) {
   //Create an object
   const upgrObj = {
     name: upgrName[index],
@@ -61,17 +68,8 @@ function upgradePurchasedCps(index) {
   }
   upgrPurchased[index] += 1;
   //update shop labels]
-}
 
-// function upgradePurchasedCps(upgrade) {
-//   const bonus = upgrade.multiplier;
-//   cps += bonus;
-//   upgrade.purchased += 1;
-//   upgrade.function();
-// }
-
-function upgradePurchasedClickValue(upgrade) {
-  clickValue += upgrade;
+  updateLabels(index);
 }
 
 //save values using JSON.stringify
