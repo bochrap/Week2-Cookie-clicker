@@ -38,24 +38,25 @@ const clickVal2 = 10;
 const clickVal3 = 100;
 const clickVal4 = 1000;
 
-const upgrName = ["Granny", "Oven", "Factory", "Mine", "Bank"];
-const upgrCost = [100, 10000, 1000000, 100000000, 10000000000];
-const upgrMultiplier = [1, 10, 100, 1000, 10000];
-const upgrPurchased = [0, 0, 0, 0, 0];
+const upgrName = ["Grandma", "Oven", "Factory"];
+const upgrCost = [100, 10000, 1000000];
+const upgrMultiplier = [1, 10, 100];
+const upgrPurchased = [0, 0, 0];
+const upgrType = ["cps", "cps", "cps", "clickVal", "clickVal", "clickVal"];
 
-function upgradePurchasedCps(upgrade, index) {
+function upgradePurchasedCps(index) {
   //Create an object
   const upgrObj = {
     name: upgrName[index],
     cost: upgrCost[index],
     multiplier: upgrMultiplier[index],
     purchased: upgrPurchased[index],
+    type: upgrType[index],
   };
   //update basic values
   cps += upgrObj.multiplier;
   upgrPurchased[index] += 1;
-  upgrade.purchased += 1;
-  //update shop labels
+  //update shop labels]
 }
 
 // function upgradePurchasedCps(upgrade) {
@@ -76,6 +77,8 @@ function saveProgress() {
     cps,
     clickValue,
     upgrPurchased,
+    upgrMultiplier,
+    upgrCost,
   };
   localStorage.setItem("progress", JSON.stringify(progress));
 }
