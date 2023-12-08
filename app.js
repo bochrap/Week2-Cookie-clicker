@@ -38,21 +38,39 @@ const clickVal2 = 10;
 const clickVal3 = 100;
 const clickVal4 = 1000;
 
+const upgrName = ["Granny", "Oven", "Factory", "Mine", "Bank"];
+const upgrCost = [100, 10000, 1000000, 100000000, 10000000000];
+const upgrMultiplier = [1, 10, 100, 1000, 10000];
+const upgrPurchased = [0, 0, 0, 0, 0];
+
+//kill test granny
 const testGranny = {
   cost: 100,
   multiplier: 1,
   purchased: 0,
-  function() {
-    localStorage.setItem("testGranny", this.purchased);
-  },
 };
 
-function upgradePurchasedCps(upgrade) {
-  const bonus = upgrade.multiplier;
-  cps += bonus;
+function upgradePurchasedCps(upgrade, index) {
+  //Create an object
+  const upgrObj = {
+    name: upgrName[index],
+    cost: upgrCost[index],
+    multiplier: upgrMultiplier[index],
+    purchased: upgrPurchased[index],
+  };
+  //update basic values
+  cps += upgrObj.multiplier;
+  upgrPurchased[index] += 1;
   upgrade.purchased += 1;
-  upgrade.function();
+  //update shop labels
 }
+
+// function upgradePurchasedCps(upgrade) {
+//   const bonus = upgrade.multiplier;
+//   cps += bonus;
+//   upgrade.purchased += 1;
+//   upgrade.function();
+// }
 
 function upgradePurchasedClickValue(upgrade) {
   clickValue += upgrade;
@@ -64,6 +82,8 @@ function saveProgress() {
     cookieCounter,
     cps,
     clickValue,
+    testGranny: testGranny.purchased, //Kill test granny
+    upgrPurchased,
   };
   localStorage.setItem("progress", JSON.stringify(progress));
 }
