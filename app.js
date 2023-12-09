@@ -67,6 +67,7 @@ function purchaseUpgrade(index) {
     clickValue += upgrObj.multiplier;
   }
   upgrPurchased[index] += 1;
+  cookieCounter -= upgrObj.cost;
   //update shop labels]
 
   updateLabels(index);
