@@ -2,10 +2,25 @@ const cookie = document.getElementById("theCookie");
 const howManyCookies = document.getElementById("numberOfCookies");
 const howFastCookies = document.getElementById("cookiesPerSecond");
 
+const upgrName = [
+  "Grandma",
+  "Oven",
+  "Factory",
+  "Upgrade1",
+  "Upgrade2",
+  "Upgrade3",
+];
+const upgrCost = [100, 10000, 1000000, 500, 5000, 50000];
+const upgrMultiplier = [1, 10, 100, 2, 15, 50];
+const upgrPurchased = [0, 0, 0, 0, 0, 0];
+const upgrType = ["cps", "cps", "cps", "clickVal", "clickVal", "clickVal"];
+
 //variables for basic functionalities
 let cookieCounter = 0;
 let cps = 1;
 let clickValue = 1;
+
+const buyItem = document.querySelectorAll(".buyItem");
 
 //Cookie clicked event listnener
 cookie.addEventListener("click", function () {
@@ -27,26 +42,11 @@ setInterval(function () {
 
 //UPGRADES SECTION
 
-const buyItem = document.querySelectorAll(".buyItem");
-
 buyItem.forEach(function (button, index) {
   button.addEventListener("click", function () {
     purchaseUpgrade(index);
   });
 });
-
-const upgrName = [
-  "Grandma",
-  "Oven",
-  "Factory",
-  "Upgrade1",
-  "Upgrade2",
-  "Upgrade3",
-];
-const upgrCost = [100, 10000, 1000000, 500, 5000, 50000];
-const upgrMultiplier = [1, 10, 100, 2, 15, 50];
-const upgrPurchased = [0, 0, 0, 0, 0, 0];
-const upgrType = ["cps", "cps", "cps", "clickVal", "clickVal", "clickVal"];
 
 function updateLabels(index) {
   const purchased = document.getElementsByClassName("purchased");
@@ -76,13 +76,19 @@ function purchaseUpgrade(index) {
     type: upgrType[index],
   };
   //update basic values based on the type of upgrade
-  if (upgrObj.type == "cps") {
-    cps += upgrObj.multiplier;
+
+  if (cookieCounter - upgrObj.cost < 0) {
+    console.log("You're poor, ha ha!");
   } else {
-    clickValue += upgrObj.multiplier;
+    if (upgrObj.type == "cps") {
+      cps += upgrObj.multiplier;
+    } else {
+      clickValue += upgrObj.multiplier;
+    }
+    upgrPurchased[index] += 1;
+    cookieCounter -= upgrObj.cost;
   }
-  upgrPurchased[index] += 1;
-  cookieCounter -= upgrObj.cost;
+
   //update shop labels]
 
   updateLabels(index);
