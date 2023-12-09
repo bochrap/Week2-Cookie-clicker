@@ -20,6 +20,24 @@ let cookieCounter = 0;
 let cps = 1;
 let clickValue = 1;
 
+let data = {
+  cookieCounter: 0,
+  cps: 1,
+  clickValue: 1,
+  upgrName: [
+    "Grandma",
+    "Oven",
+    "Factory",
+    "Upgrade1",
+    "Upgrade2",
+    "The Midas Touch",
+  ],
+  upgrCost: [100, 10000, 1000000, 500, 5000, 50000],
+  upgrMultiplier: [1, 10, 100, 2, 15, 50],
+  upgrPurchased: [0, 0, 0, 0, 0, 0],
+  upgrType: ["cps", "cps", "cps", "clickVal", "clickVal", "clickVal"],
+};
+
 const buyItem = document.querySelectorAll(".buyItem");
 
 //Cookie clicked event listnener
