@@ -27,10 +27,25 @@ setInterval(function () {
 
 //UPGRADES SECTION
 
-const upgrName = ["Grandma", "Oven", "Factory"];
-const upgrCost = [100, 10000, 1000000];
-const upgrMultiplier = [1, 10, 100];
-const upgrPurchased = [0, 0, 0];
+const buyItem = document.querySelectorAll(".buyItem");
+
+buyItem.forEach(function (button, index) {
+  button.addEventListener("click", function () {
+    purchaseUpgrade(index);
+  });
+});
+
+const upgrName = [
+  "Grandma",
+  "Oven",
+  "Factory",
+  "Upgrade1",
+  "Upgrade2",
+  "Upgrade3",
+];
+const upgrCost = [100, 10000, 1000000, 500, 5000, 50000];
+const upgrMultiplier = [1, 10, 100, 2, 15, 50];
+const upgrPurchased = [0, 0, 0, 0, 0, 0];
 const upgrType = ["cps", "cps", "cps", "clickVal", "clickVal", "clickVal"];
 
 function updateLabels(index) {
