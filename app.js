@@ -8,7 +8,7 @@ const upgrName = [
   "Factory",
   "Upgrade1",
   "Upgrade2",
-  "Upgrade3",
+  "The Midas Touch",
 ];
 const upgrCost = [100, 10000, 1000000, 500, 5000, 50000];
 const upgrMultiplier = [1, 10, 100, 2, 15, 50];
@@ -35,7 +35,7 @@ function updateCookies(byHowMany) {
   saveProgress();
 }
 
-//Add cookies with time
+//Add cookies with time, handles Cookies Per Second
 setInterval(function () {
   updateCookies(cps);
 }, 1000);
