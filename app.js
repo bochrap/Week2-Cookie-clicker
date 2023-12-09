@@ -117,8 +117,27 @@ function saveProgress() {
 //     clickValue = progress.clickValue;
 //     howManyCookies.textContent = progress.howManyCookies;
 //     howFastCookies.textContent = progress.howFastCookies;
+
+//     for (let i = 0; i <= 5; i++) {
+//       updateLabels(i);
+//     }
 //   }
 // }
+
+function loadProgress() {
+  const loadedProgress = JSON.parse(localStorage.getItem("progress"));
+  if (loadedProgress) {
+    cookieCounter = loadedProgress.cookieCounter;
+    cps = loadedProgress.cps;
+    clickValue = loadedProgress.clickValue;
+    howManyCookies.textContent = loadedProgress.howManyCookies;
+    howFastCookies.textContent = loadedProgress.howFastCookies;
+
+    for (let i = 0; i <= 5; i++) {
+      updateLabels(i);
+    }
+  }
+}
 
 // loadProgress();
 
