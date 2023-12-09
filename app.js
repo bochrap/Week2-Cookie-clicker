@@ -2,19 +2,6 @@ const cookie = document.getElementById("theCookie");
 const howManyCookies = document.getElementById("numberOfCookies");
 const howFastCookies = document.getElementById("cookiesPerSecond");
 
-const upgrName = [
-  "Grandma",
-  "Oven",
-  "Factory",
-  "Upgrade1",
-  "Upgrade2",
-  "The Midas Touch",
-];
-const upgrCost = [100, 10000, 1000000, 500, 5000, 50000];
-const upgrMultiplier = [1, 10, 100, 2, 15, 50];
-const upgrPurchased = [0, 0, 0, 0, 0, 0];
-const upgrType = ["cps", "cps", "cps", "clickVal", "clickVal", "clickVal"];
-
 //variables for basic functionalities
 let cookieCounter = 0;
 let cps = 1;
@@ -50,7 +37,7 @@ function updateCookies(byHowMany) {
   cookieCounter += byHowMany;
   howManyCookies.textContent = cookieCounter;
   howFastCookies.textContent = `${cps} cps`;
-  saveProgress();
+  // saveProgress();
 }
 
 //Add cookies with time, handles Cookies Per Second
@@ -68,30 +55,30 @@ buyItem.forEach(function (button, index) {
 
 function updateLabels(index) {
   const purchased = document.getElementsByClassName("purchased");
-  purchased[index].textContent = upgrPurchased[index];
+  purchased[index].textContent = data.upgrPurchased[index];
 
   const name = document.getElementsByClassName("name");
-  name[index].textContent = upgrName[index];
+  name[index].textContent = data.upgrName[index];
 
   const price = document.getElementsByClassName("price");
-  price[index].textContent = `🍪${upgrCost[index]}`;
+  price[index].textContent = `🍪${data.upgrCost[index]}`;
 
   const upgrade = document.getElementsByClassName("upgrade");
-  if (upgrType[index] == "cps") {
-    upgrade[index].textContent = `+${upgrMultiplier[index]}cps`;
+  if (data.upgrType[index] == "cps") {
+    upgrade[index].textContent = `+${data.upgrMultiplier[index]}cps`;
   } else {
-    upgrade[index].textContent = `+${upgrMultiplier[index]}cV`;
+    upgrade[index].textContent = `+${data.upgrMultiplier[index]}cV`;
   }
 }
 
 function purchaseUpgrade(index) {
   //Create an object
   const upgrObj = {
-    name: upgrName[index],
-    cost: upgrCost[index],
-    multiplier: upgrMultiplier[index],
-    purchased: upgrPurchased[index],
-    type: upgrType[index],
+    name: data.upgrName[index],
+    cost: data.upgrCost[index],
+    multiplier: data.upgrMultiplier[index],
+    purchased: data.upgrPurchased[index],
+    type: data.upgrType[index],
   };
   //update basic values based on the type of upgrade
 
@@ -103,7 +90,7 @@ function purchaseUpgrade(index) {
     } else {
       clickValue += upgrObj.multiplier;
     }
-    upgrPurchased[index] += 1;
+    data.upgrPurchased[index] += 1;
     cookieCounter -= upgrObj.cost;
   }
 
@@ -113,17 +100,17 @@ function purchaseUpgrade(index) {
 }
 
 //save values using JSON.stringify
-function saveProgress() {
-  const progress = {
-    cookieCounter,
-    cps,
-    clickValue,
-    upgrPurchased,
-    upgrMultiplier,
-    upgrCost,
-  };
-  localStorage.setItem("progress", JSON.stringify(progress));
-}
+// function saveProgress() {
+//   const progress = {
+//     cookieCounter,
+//     cps,
+//     clickValue,
+//     data.upgrPurchased,
+//     data.upgrMultiplier,
+//     data.upgrCost,
+//   };
+//   localStorage.setItem("progress", JSON.stringify(progress));
+// }
 
 //Retrieve saved values into corresponding variables ***************************UNCOMMENT THIS ONE LATER
 
