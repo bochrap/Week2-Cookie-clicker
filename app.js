@@ -58,8 +58,9 @@ const defaultData = {
   ],
 };
 
-let stringifiedData = JSON.stringify(data);
-localStorage.setItem("data", stringifiedData);
+for (let i = 0; i <= 5; i++) {
+  updateLabels(i);
+}
 
 //wonky ass animation
 function triggerAnimation() {
@@ -87,8 +88,8 @@ function updateCookies(byHowMany) {
   howHardCookies.textContent = `X${data.clickValue} Click Value`;
   //each time the values are updated stringified version of data is added to local storage
   //saving progress
-  // let stringifiedData = JSON.stringify(data);
-  // localStorage.setItem("data", stringifiedData);
+  //   let jsonData = JSON.stringify(data);
+  //   localStorage.setItem("data", jsonData);
 }
 
 //keep buttons disabled if any items cost is bigger than owned cookies
@@ -162,20 +163,21 @@ function purchaseUpgrade(index) {
   updateLabels(index);
 }
 
-function loadProgress() {
-  const localData = localStorage.getItem("data");
-  data = JSON.parse(localData);
+// function loadProgress() {
+//   const localData = localStorage.getItem("data");
+//   data = JSON.parse(localData);
 
-  for (let i = 0; i <= 5; i++) {
-    updateLabels(i);
-  }
-}
+//   for (let i = 0; i <= 5; i++) {
+//     updateLabels(i);
+//   }
+// }
 
-loadProgress();
+// loadProgress();
 
+//reset works only when default objest is stringified and parsed back
 function resetProgress() {
-  let jasonizedDefault = JSON.stringify(defaultData);
-  data = JSON.parse(jasonizedDefault);
+  let stringifieldDefaultData = JSON.stringify(defaultData);
+  data = JSON.parse(stringifieldDefaultData);
 
   for (let i = 0; i <= 5; i++) {
     updateLabels(i);
