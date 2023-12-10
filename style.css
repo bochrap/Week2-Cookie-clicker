@@ -12,6 +12,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  position: relative;
 }
 
 #numberOfCookies {
@@ -59,8 +60,30 @@ img {
   flex-direction: column;
   justify-content: center;
   height: 100vh;
+  position: relative;
 }
 
 h1 {
   align-self: center;
+}
+
+.toShop {
+  font-size: 3rem;
+  position: absolute;
+  bottom: 0px;
+}
+
+.toCookie {
+  font-size: 3rem;
+  position: absolute;
+  top: 0px;
+  align-self: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: black;
 }
