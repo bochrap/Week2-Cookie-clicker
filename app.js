@@ -19,8 +19,8 @@ let data = {
     "Diamond Cutter",
     "The Midas Touch",
   ],
-  upgrCost: [100, 10000, 1000000, 500, 5000, 50000],
-  upgrMultiplier: [1, 10, 100, 2, 15, 50],
+  upgrCost: [10, 100, 1000, 50, 500, 1000],
+  upgrMultiplier: [1, 10, 100, 2, 15, 100],
   upgrPurchased: [0, 0, 0, 0, 0, 0],
   upgrType: [
     "data.cps",
