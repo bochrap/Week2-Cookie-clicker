@@ -58,6 +58,39 @@ const defaultData = {
   ],
 };
 
+function saveProgress() {
+  let jsonData = JSON.stringify(data);
+  localStorage.setItem("data", jsonData);
+}
+
+function loadProgress() {
+  const localData = localStorage.getItem("data");
+
+  if (localData !== null) {
+    try {
+      data = JSON.parse(localData);
+      if (data === null) {
+        // If data is null after parsing, set it to defaultData
+        data = { ...defaultData };
+        saveProgress();
+      }
+    } catch (error) {
+      console.error("Error parsing localData:", error);
+      data = { ...defaultData };
+      saveProgress();
+    }
+  } else {
+    // Set data to defaultData and save to local storage
+    data = { ...defaultData };
+    saveProgress();
+  }
+  for (let i = 0; i <= 5; i++) {
+    updateLabels(i);
+  }
+}
+
+loadProgress();
+
 for (let i = 0; i <= 5; i++) {
   updateLabels(i);
 }
@@ -89,8 +122,8 @@ function updateCookies(byHowMany) {
   howHardCookies.textContent = `X${data.clickValue} Click Value`;
   //each time the values are updated stringified version of data is added to local storage
   //saving progress
-  //   let jsonData = JSON.stringify(data);
-  //   localStorage.setItem("data", jsonData);
+  // let jsonData = JSON.stringify(data);
+  // localStorage.setItem("data", jsonData);
 }
 
 //keep buttons disabled if any items cost is bigger than owned cookies
@@ -167,16 +200,20 @@ function purchaseUpgrade(index) {
   updateLabels(index);
 }
 
-function loadProgress() {
-  const localData = localStorage.getItem("data");
-  data = JSON.parse(localData);
+// function loadProgress() {
+//   const localData = localStorage.getItem("data");
+//   if (localData !== null) {
+//     data = JSON.parse(localData);
+//   } else {
 
-  for (let i = 0; i <= 5; i++) {
-    updateLabels(i);
-  }
-}
+//   }
 
-loadProgress();
+//   for (let i = 0; i <= 5; i++) {
+//     updateLabels(i);
+//   }
+// }
+
+// loadProgress();
 
 //reset works only when default objest is stringified and parsed back
 function resetProgress() {
