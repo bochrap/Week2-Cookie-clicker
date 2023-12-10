@@ -71,6 +71,7 @@ function triggerAnimation() {
   }, 300);
 }
 
+//list of all buy buttons
 const buyItem = document.querySelectorAll(".buyItem");
 
 //Cookie clicked event listnener
@@ -106,6 +107,9 @@ function hideButtons(availableFunds) {
 
 //Add cookies with time, handles Cookies Per Second
 setInterval(function () {
+  let jsonData = JSON.stringify(data);
+  localStorage.setItem("data", jsonData);
+
   updateCookies(data.cps);
   hideButtons(data.cookieCounter);
 }, 1000);
@@ -163,21 +167,21 @@ function purchaseUpgrade(index) {
   updateLabels(index);
 }
 
-// function loadProgress() {
-//   const localData = localStorage.getItem("data");
-//   data = JSON.parse(localData);
+function loadProgress() {
+  const localData = localStorage.getItem("data");
+  data = JSON.parse(localData);
 
-//   for (let i = 0; i <= 5; i++) {
-//     updateLabels(i);
-//   }
-// }
+  for (let i = 0; i <= 5; i++) {
+    updateLabels(i);
+  }
+}
 
-// loadProgress();
+loadProgress();
 
 //reset works only when default objest is stringified and parsed back
 function resetProgress() {
-  let stringifieldDefaultData = JSON.stringify(defaultData);
-  data = JSON.parse(stringifieldDefaultData);
+  let stringifiedDefaultData = JSON.stringify(defaultData);
+  data = JSON.parse(stringifiedDefaultData);
 
   for (let i = 0; i <= 5; i++) {
     updateLabels(i);
