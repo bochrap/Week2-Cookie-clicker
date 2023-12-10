@@ -3,9 +3,6 @@ const howManyCookies = document.getElementById("numberOfCookies");
 const howFastCookies = document.getElementById("cookiesPerSecond");
 
 //variables for basic functionalities
-let cookieCounter = 0;
-let cps = 1;
-let clickValue = 1;
 
 let data = {
   cookieCounter: 0,
@@ -22,27 +19,34 @@ let data = {
   upgrCost: [100, 10000, 1000000, 500, 5000, 50000],
   upgrMultiplier: [1, 10, 100, 2, 15, 50],
   upgrPurchased: [0, 0, 0, 0, 0, 0],
-  upgrType: ["cps", "cps", "cps", "clickVal", "clickVal", "clickVal"],
+  upgrType: [
+    "data.cps",
+    "data.cps",
+    "data.cps",
+    "clickVal",
+    "clickVal",
+    "clickVal",
+  ],
 };
 
 const buyItem = document.querySelectorAll(".buyItem");
 
 //Cookie clicked event listnener
 cookie.addEventListener("click", function () {
-  updateCookies(clickValue);
+  updateCookies(data.clickValue);
 });
 
-//function updating the cookies count and cps by a given value
+//function updating the cookies count and data.cps by a given value
 function updateCookies(byHowMany) {
-  cookieCounter += byHowMany;
-  howManyCookies.textContent = cookieCounter;
-  howFastCookies.textContent = `${cps} cps`;
+  data.cookieCounter += byHowMany;
+  howManyCookies.textContent = data.cookieCounter;
+  howFastCookies.textContent = `${data.cps} cps`;
   // saveProgress();
 }
 
 //Add cookies with time, handles Cookies Per Second
 setInterval(function () {
-  updateCookies(cps);
+  updateCookies(data.cps);
 }, 1000);
 
 //UPGRADES SECTION
@@ -64,7 +68,7 @@ function updateLabels(index) {
   price[index].textContent = `🍪${data.upgrCost[index]}`;
 
   const upgrade = document.getElementsByClassName("upgrade");
-  if (data.upgrType[index] == "cps") {
+  if (data.upgrType[index] == "data.cps") {
     upgrade[index].textContent = `+${data.upgrMultiplier[index]}cps`;
   } else {
     upgrade[index].textContent = `+${data.upgrMultiplier[index]}cV`;
@@ -82,16 +86,16 @@ function purchaseUpgrade(index) {
   };
   //update basic values based on the type of upgrade
 
-  if (cookieCounter - upgrObj.cost < 0) {
+  if (data.cookieCounter - upgrObj.cost < 0) {
     console.log("You're poor, ha ha!");
   } else {
-    if (upgrObj.type == "cps") {
-      cps += upgrObj.multiplier;
+    if (upgrObj.type == "data.cps") {
+      data.cps += upgrObj.multiplier;
     } else {
-      clickValue += upgrObj.multiplier;
+      data.clickValue += upgrObj.multiplier;
     }
     data.upgrPurchased[index] += 1;
-    cookieCounter -= upgrObj.cost;
+    data.cookieCounter -= upgrObj.cost;
   }
 
   //update shop labels]
@@ -102,9 +106,9 @@ function purchaseUpgrade(index) {
 //save values using JSON.stringify
 // function saveProgress() {
 //   const progress = {
-//     cookieCounter,
-//     cps,
-//     clickValue,
+//     data.cookieCounter,
+//     data.cps,
+//     data.clickValue,
 //     data.upgrPurchased,
 //     data.upgrMultiplier,
 //     data.upgrCost,
@@ -117,9 +121,9 @@ function purchaseUpgrade(index) {
 // function loadProgress() {
 //   const progress = JSON.parse(localStorage.getItem("progress"));
 //   if (progress) {
-//     cookieCounter = progress.cookieCounter;
-//     cps = progress.cps;
-//     clickValue = progress.clickValue;
+//     data.cookieCounter = progress.data.cookieCounter;
+//     data.cps = progress.data.cps;
+//     data.clickValue = progress.data.clickValue;
 //     howManyCookies.textContent = progress.howManyCookies;
 //     howFastCookies.textContent = progress.howFastCookies;
 
@@ -132,9 +136,9 @@ function purchaseUpgrade(index) {
 function loadProgress() {
   const loadedProgress = JSON.parse(localStorage.getItem("progress"));
   if (loadedProgress) {
-    cookieCounter = loadedProgress.cookieCounter;
-    cps = loadedProgress.cps;
-    clickValue = loadedProgress.clickValue;
+    data.cookieCounter = loadedProgress.data.cookieCounter;
+    data.cps = loadedProgress.data.cps;
+    data.clickValue = loadedProgress.data.clickValue;
     howManyCookies.textContent = loadedProgress.howManyCookies;
     howFastCookies.textContent = loadedProgress.howFastCookies;
 
@@ -154,6 +158,6 @@ function loadProgress() {
 //   localStorage.removeItem("progress");
 // }
 // if (hoardedCookies) {
-//   cookieCounter = hoardedCookies;
-//   cps = gain$;
+//   data.cookieCounter = hoardedCookies;
+//   data.cps = gain$;
 // }
