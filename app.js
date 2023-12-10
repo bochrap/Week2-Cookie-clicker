@@ -57,11 +57,20 @@ const defaultData = {
   ],
 };
 
+function triggerAnimation() {
+  cookie.classList.add("spin-me-round");
+
+  setTimeout(() => {
+    cookie.classList.remove("spin-me-round");
+  }, 300);
+}
+
 const buyItem = document.querySelectorAll(".buyItem");
 
 //Cookie clicked event listnener
 cookie.addEventListener("click", function () {
   updateCookies(data.clickValue);
+  triggerAnimation();
 });
 
 //function updating the cookies count and data.cps by a given value
