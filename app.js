@@ -65,7 +65,7 @@ cookie.addEventListener("click", function () {
 function updateCookies(byHowMany) {
   data.cookieCounter += byHowMany;
   howManyCookies.textContent = data.cookieCounter;
-  howFastCookies.textContent = `${data.cps} cps`;
+  howFastCookies.textContent = `${data.cps} cookie(s) per second`;
   const stringifiedData = JSON.stringify(data);
   localStorage.setItem("data", stringifiedData);
   // saveProgress();
