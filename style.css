@@ -144,6 +144,6 @@ footer button {
   animation: spin 100ms linear;
 }
 
-.hidden {
-  z-index: -1;
+button:disabled {
+  filter: grayscale(1);
 }

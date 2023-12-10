@@ -88,14 +88,14 @@ function updateCookies(byHowMany) {
   localStorage.setItem("data", stringifiedData);
 }
 
-//keep buttons hidden if any items cost is bigger than owned cookies
+//keep buttons disabled if any items cost is bigger than owned cookies
 function hideButtons(availableFunds) {
   buyItem.forEach((element, index) => {
     const price = data.upgrCost[index];
     if (price > availableFunds) {
-      element.classList.add("hidden");
+      element.disabled = true;
     } else {
-      element.classList.remove("hidden");
+      element.disabled = false;
     }
   });
 }
