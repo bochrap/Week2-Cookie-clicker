@@ -43,7 +43,7 @@ const defaultData = {
     "Upgrade2",
     "The Midas Touch",
   ],
-  upgrCost: [100, 10000, 1000000, 500, 5000, 50000],
+  upgrCost: [10, 100, 1000, 50, 500, 5000],
   upgrMultiplier: [1, 10, 100, 2, 15, 50],
   upgrPurchased: [0, 0, 0, 0, 0, 0],
   upgrType: [
