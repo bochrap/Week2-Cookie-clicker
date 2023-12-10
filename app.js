@@ -32,6 +32,7 @@ let data = {
   ],
 };
 
+//default copy of data object for reseting the game
 const defaultData = {
   cookieCounter: 0,
   cps: 1,
@@ -57,6 +58,7 @@ const defaultData = {
   ],
 };
 
+//wonky ass animation
 function triggerAnimation() {
   cookie.classList.add("spin-me-round");
 
@@ -80,18 +82,31 @@ function updateCookies(byHowMany) {
   hiddenCookie.textContent = `(🍪 ${data.cookieCounter})`;
   howFastCookies.textContent = `${data.cps} Cookie(s) Per Second`;
   howHardCookies.textContent = `X${data.clickValue} Click Value`;
+  //each time the values are updated stringified version of data is added to local storage
+  //saving progress
   const stringifiedData = JSON.stringify(data);
   localStorage.setItem("data", stringifiedData);
-  // saveProgress();
+}
+
+//keep buttons hidden if any items cost is bigger than owned cookies
+function hideButtons(availableFunds) {
+  buyItem.forEach((element, index) => {
+    const price = data.upgrCost[index];
+    if (price > availableFunds) {
+      element.classList.add("hidden");
+    } else {
+      element.classList.remove("hidden");
+    }
+  });
 }
 
 //Add cookies with time, handles Cookies Per Second
 setInterval(function () {
   updateCookies(data.cps);
+  hideButtons(data.cookieCounter);
 }, 1000);
 
-//UPGRADES SECTION
-
+//every shop button triggers item purchase
 buyItem.forEach(function (button, index) {
   button.addEventListener("click", function () {
     purchaseUpgrade(index);
@@ -167,15 +182,3 @@ function resetProgress() {
 resetBtn.addEventListener("click", function () {
   resetProgress();
 });
-
-//attempl to clear preferences
-
-// function clearPreferences(event) {
-//   event.preventDefault();
-
-//   localStorage.removeItem("progress");
-// }
-// if (hoardedCookies) {
-//   data.cookieCounter = hoardedCookies;
-//   data.cps = gain$;
-// }

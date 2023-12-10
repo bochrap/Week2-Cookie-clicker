@@ -143,3 +143,7 @@ footer button {
 .spin-me-round {
   animation: spin 100ms linear;
 }
+
+.hidden {
+  z-index: -1;
+}
