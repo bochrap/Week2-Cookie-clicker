@@ -87,8 +87,8 @@ function updateCookies(byHowMany) {
   howHardCookies.textContent = `X${data.clickValue} Click Value`;
   //each time the values are updated stringified version of data is added to local storage
   //saving progress
-  let stringifiedData = JSON.stringify(data);
-  localStorage.setItem("data", stringifiedData);
+  // let stringifiedData = JSON.stringify(data);
+  // localStorage.setItem("data", stringifiedData);
 }
 
 //keep buttons disabled if any items cost is bigger than owned cookies
