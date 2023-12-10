@@ -1,6 +1,7 @@
 const cookie = document.getElementById("theCookie");
 const howManyCookies = document.getElementById("numberOfCookies");
 const howFastCookies = document.getElementById("cookiesPerSecond");
+const resetBtn = document.getElementById("reset");
 
 //variables for basic functionalities
 
@@ -149,6 +150,10 @@ function resetProgress() {
     updateLabels(i);
   }
 }
+
+resetBtn.addEventListener("click", function () {
+  resetProgress();
+});
 
 //attempl to clear preferences
 
