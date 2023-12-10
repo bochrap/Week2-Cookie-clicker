@@ -2,6 +2,7 @@ const cookie = document.getElementById("theCookie");
 const howManyCookies = document.getElementById("numberOfCookies");
 const howFastCookies = document.getElementById("cookiesPerSecond");
 const resetBtn = document.getElementById("reset");
+const howHardCookies = document.getElementById("clickValue");
 
 //variables for basic functionalities
 
@@ -66,7 +67,8 @@ cookie.addEventListener("click", function () {
 function updateCookies(byHowMany) {
   data.cookieCounter += byHowMany;
   howManyCookies.textContent = data.cookieCounter;
-  howFastCookies.textContent = `${data.cps} cookie(s) per second`;
+  howFastCookies.textContent = `${data.cps} Cookie(s) Per Second`;
+  howHardCookies.textContent = `X${data.clickValue} Click Value`;
   const stringifiedData = JSON.stringify(data);
   localStorage.setItem("data", stringifiedData);
   // saveProgress();

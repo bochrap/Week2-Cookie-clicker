@@ -53,3 +53,14 @@ img {
   max-width: 30px;
   max-height: 30px;
 }
+
+#shop {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+h1 {
+  align-self: center;
+}
