@@ -3,6 +3,7 @@ const howManyCookies = document.getElementById("numberOfCookies");
 const howFastCookies = document.getElementById("cookiesPerSecond");
 const resetBtn = document.getElementById("reset");
 const howHardCookies = document.getElementById("clickValue");
+const hiddenCookie = document.getElementById("hiddenCookie");
 
 //variables for basic functionalities
 
@@ -11,11 +12,11 @@ let data = {
   cps: 1,
   clickValue: 1,
   upgrName: [
-    "Grandma",
-    "Oven",
-    "Factory",
-    "Upgrade1",
-    "Upgrade2",
+    "Swift Mixers",
+    "Golden Pin",
+    "Quantum Compressor",
+    "Choco Boost",
+    "Diamond Cutter",
     "The Midas Touch",
   ],
   upgrCost: [100, 10000, 1000000, 500, 5000, 50000],
@@ -36,11 +37,11 @@ const defaultData = {
   cps: 1,
   clickValue: 1,
   upgrName: [
-    "Grandma",
-    "Oven",
-    "Factory",
-    "Upgrade1",
-    "Upgrade2",
+    "Swift Mixers",
+    "Golden Pin",
+    "Quantum Compressor",
+    "Choco Boost",
+    "Diamond Cutter",
     "The Midas Touch",
   ],
   upgrCost: [10, 100, 1000, 50, 500, 5000],
@@ -67,6 +68,7 @@ cookie.addEventListener("click", function () {
 function updateCookies(byHowMany) {
   data.cookieCounter += byHowMany;
   howManyCookies.textContent = data.cookieCounter;
+  hiddenCookie.textContent = `(🍪 ${data.cookieCounter})`;
   howFastCookies.textContent = `${data.cps} Cookie(s) Per Second`;
   howHardCookies.textContent = `X${data.clickValue} Click Value`;
   const stringifiedData = JSON.stringify(data);

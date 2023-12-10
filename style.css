@@ -67,6 +67,10 @@ h1 {
   align-self: center;
 }
 
+#hiddenCookie {
+  align-self: center;
+}
+
 .toShop {
   font-size: 3rem;
   position: absolute;
@@ -115,4 +119,9 @@ footer button {
   position: absolute;
   left: 1%;
   background-color: rgb(239, 99, 13);
+}
+
+#boosts div,
+#hiddenCookie {
+  background-color: rgb(163, 237, 163);
 }
