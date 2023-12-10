@@ -29,6 +29,31 @@ let data = {
   ],
 };
 
+const defaultData = {
+  cookieCounter: 0,
+  cps: 1,
+  clickValue: 1,
+  upgrName: [
+    "Grandma",
+    "Oven",
+    "Factory",
+    "Upgrade1",
+    "Upgrade2",
+    "The Midas Touch",
+  ],
+  upgrCost: [100, 10000, 1000000, 500, 5000, 50000],
+  upgrMultiplier: [1, 10, 100, 2, 15, 50],
+  upgrPurchased: [0, 0, 0, 0, 0, 0],
+  upgrType: [
+    "data.cps",
+    "data.cps",
+    "data.cps",
+    "clickVal",
+    "clickVal",
+    "clickVal",
+  ],
+};
+
 const buyItem = document.querySelectorAll(".buyItem");
 
 //Cookie clicked event listnener
@@ -105,36 +130,6 @@ function purchaseUpgrade(index) {
   updateLabels(index);
 }
 
-//save values using JSON.stringify
-// function saveProgress() {
-//   const progress = {
-//     data.cookieCounter,
-//     data.cps,
-//     data.clickValue,
-//     data.upgrPurchased,
-//     data.upgrMultiplier,
-//     data.upgrCost,
-//   };
-//   localStorage.setItem("progress", JSON.stringify(progress));
-// }
-
-//Retrieve saved values into corresponding variables ***************************UNCOMMENT THIS ONE LATER
-
-// function loadProgress() {
-//   const progress = JSON.parse(localStorage.getItem("progress"));
-//   if (progress) {
-//     data.cookieCounter = progress.data.cookieCounter;
-//     data.cps = progress.data.cps;
-//     data.clickValue = progress.data.clickValue;
-//     howManyCookies.textContent = progress.howManyCookies;
-//     howFastCookies.textContent = progress.howFastCookies;
-
-//     for (let i = 0; i <= 5; i++) {
-//       updateLabels(i);
-//     }
-//   }
-// }
-
 function loadProgress() {
   const localData = localStorage.getItem("data");
   data = JSON.parse(localData);
@@ -146,22 +141,14 @@ function loadProgress() {
 
 loadProgress();
 
-// function loadProgress() {
-//   const loadedProgress = JSON.parse(localStorage.getItem("progress"));
-//   if (loadedProgress) {
-//     data.cookieCounter = loadedProgress.data.cookieCounter;
-//     data.cps = loadedProgress.data.cps;
-//     data.clickValue = loadedProgress.data.clickValue;
-//     howManyCookies.textContent = loadedProgress.howManyCookies;
-//     howFastCookies.textContent = loadedProgress.howFastCookies;
+function resetProgress() {
+  let jasonizedDefault = JSON.stringify(defaultData);
+  data = JSON.parse(jasonizedDefault);
 
-//     for (let i = 0; i <= 5; i++) {
-//       updateLabels(i);
-//     }
-//   }
-// }
-
-// loadProgress();
+  for (let i = 0; i <= 5; i++) {
+    updateLabels(i);
+  }
+}
 
 //attempl to clear preferences
 
