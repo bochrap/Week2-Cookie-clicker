@@ -41,6 +41,8 @@ function updateCookies(byHowMany) {
   data.cookieCounter += byHowMany;
   howManyCookies.textContent = data.cookieCounter;
   howFastCookies.textContent = `${data.cps} cps`;
+  const stringifiedData = JSON.stringify(data);
+  localStorage.setItem("data", stringifiedData);
   // saveProgress();
 }
 
@@ -134,19 +136,30 @@ function purchaseUpgrade(index) {
 // }
 
 function loadProgress() {
-  const loadedProgress = JSON.parse(localStorage.getItem("progress"));
-  if (loadedProgress) {
-    data.cookieCounter = loadedProgress.data.cookieCounter;
-    data.cps = loadedProgress.data.cps;
-    data.clickValue = loadedProgress.data.clickValue;
-    howManyCookies.textContent = loadedProgress.howManyCookies;
-    howFastCookies.textContent = loadedProgress.howFastCookies;
+  const localData = localStorage.getItem("data");
+  data = JSON.parse(localData);
 
-    for (let i = 0; i <= 5; i++) {
-      updateLabels(i);
-    }
+  for (let i = 0; i <= 5; i++) {
+    updateLabels(i);
   }
 }
+
+loadProgress();
+
+// function loadProgress() {
+//   const loadedProgress = JSON.parse(localStorage.getItem("progress"));
+//   if (loadedProgress) {
+//     data.cookieCounter = loadedProgress.data.cookieCounter;
+//     data.cps = loadedProgress.data.cps;
+//     data.clickValue = loadedProgress.data.clickValue;
+//     howManyCookies.textContent = loadedProgress.howManyCookies;
+//     howFastCookies.textContent = loadedProgress.howFastCookies;
+
+//     for (let i = 0; i <= 5; i++) {
+//       updateLabels(i);
+//     }
+//   }
+// }
 
 // loadProgress();
 
