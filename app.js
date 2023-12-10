@@ -58,6 +58,9 @@ const defaultData = {
   ],
 };
 
+const stringifiedData = JSON.stringify(data);
+localStorage.setItem("data", stringifiedData);
+
 //wonky ass animation
 function triggerAnimation() {
   cookie.classList.add("spin-me-round");
@@ -84,7 +87,6 @@ function updateCookies(byHowMany) {
   howHardCookies.textContent = `X${data.clickValue} Click Value`;
   //each time the values are updated stringified version of data is added to local storage
   //saving progress
-  const stringifiedData = JSON.stringify(data);
   localStorage.setItem("data", stringifiedData);
 }
 
